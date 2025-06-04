@@ -1,11 +1,14 @@
-package org.hans.demo;
+package org.hans.demo.candidate;
+
+import org.hans.demo.model.Candidate;
+import org.hans.demo.util.ResumeUtil;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Main {
+public class CandidateScript {
     public static void main(String[] args) {
         File[] files = ResumeUtil.extractResumes("cvs/", ".pdf");
 

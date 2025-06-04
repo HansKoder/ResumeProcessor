@@ -1,24 +1,67 @@
-# Branch loop-vs-streams-parallel
+# ResumeProcessor 
 
-# Inject CV to test
+**ResumeProcessor** is a personal performance lab focused on benchmarking Java code to process resumes in various ways.  
+The goal is to **analyze performance trade-offs** between different approaches using modern Java features.
 
-1) mkdir cvs in the project's root
-2) You need to copy each resume from cvs-original to cvs
-3) execute PopulateCV only once, the parameter 249 is because you must have the original cv.
-4) You can update the parameters numbers of copies
+## 🎯 Purpose
 
+- Understand performance implications of different Java constructs.
+- Compare imperative and functional styles: `for` loops vs `Streams` vs `parallelStreams`.
+- Explore `CompletableFuture`, `ExecutorService`, `@Async`, and other async patterns.
+- Evaluate the impact of parallelism and concurrency in resume processing tasks.
 
-# Execute main to anaylize of difference among loop, stream and parallel using benchmark
-1) command maven
+## 🧪 Benchmarking Tools
+
+| Tool        | Description                            |
+|-------------|----------------------------------------|
+| Java 17     | Core language for experimentation      |
+| JMH         | Benchmarking micro-framework for Java  |
+| Prometheus  | Metrics collection (planned)           |
+| Grafana     | Visualize performance metrics (planned)|
+
+## 📁 Structure
+
+This project is divided into multiple Maven modules, each representing a different scenario:
+
+- `loop-vs-streams`: Compare classic `for` loops, `Stream`, and `parallelStream`
+
+## module loop-vs-streams
+
+### Description
+This branch has as goal to compare among loop, streams and parallel, this is a small lab to understand better their behavior
+
+### Steps
+
+### 1) Clone resumes
+- Locate in the project's root from module loop-vs-streams
+```cmd
+cd loop-vs-streams/
+```
+
+- mkdir cvs
+```cmd
+mkdir cvs
+```
+
+- Copy resume to test
+```cmd
+cp -r cvs-original/* cvs/
+```
+
+- execute PopulateCV only once using intellij
+
+### 2) Benchmark
+- clean and install
 ```mvn
 mvn clean install
 ```
 
-2) ejecute benchmark
+- execute benchmark
 
-```java
-java -jar target/ResumeProcessor-1.0-SNAPSHOT.jar
+```cmd
+java -jar target/loop-vs-streams-1.0-SNAPSHOT.jar 
 ```
 
-# Execute main to anaylize of difference among loop, stream and parallel using main.js
-1) Run main.js using intellij IDE 
+### 3) For scripting (Optional)
+- Run CandidateScript.java via IDE 
+

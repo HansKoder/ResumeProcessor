@@ -1,6 +1,8 @@
-package org.hans.demo;
+package org.hans.demo.candidate;
 
+import org.hans.demo.model.Candidate;
 import org.hans.demo.model.RoleProfile;
+import org.hans.demo.util.ResumeUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,8 +14,8 @@ public class CandidateLoop {
     public List<Candidate> getCandidates (List<File> files) {
         List<Candidate> list = new ArrayList<>();
         for (File file: files) {
-            String text = ResumeProcessor.extractText(file);
-            Map<RoleProfile, Integer> scores = ResumeScorer.scoreResume(text);
+            String text = ResumeUtil.extractText(file);
+            Map<RoleProfile, Integer> scores = ResumeUtil.scoreResume(text);
             list.add(getBestMatch(file.getName(), scores));
         }
 
