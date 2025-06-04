@@ -1,21 +1,29 @@
 # ResumeProcessor 
 
-It has as goal to imitate a processor from resumes with the goal give analysis to different candidates with the different profiles
-<br/>
-The main idea is understanding the performance in Java using different struct to measure performance using JMH - grafana - prometheus.
-<br/>
-Honestly, this is a personal lab to start to deepen in Java and its performance
-<br/> this project will be divided per several branches to test different scenarios
+**ResumeProcessor** is a personal performance lab focused on benchmarking Java code to process resumes in various ways.  
+The goal is to **analyze performance trade-offs** between different approaches using modern Java features.
 
-# Stack
-| Technology or tool | Short description      |
-|--------------------|------------------------|
-| Java 17            | -                      |
-| JMH                | Make test benchmarking |
+## 🎯 Purpose
 
-# List of branches 
+- Understand performance implications of different Java constructs.
+- Compare imperative and functional styles: `for` loops vs `Streams` vs `parallelStreams`.
+- Explore `CompletableFuture`, `ExecutorService`, `@Async`, and other async patterns.
+- Evaluate the impact of parallelism and concurrency in resume processing tasks.
 
-- loop-vs-streams-and-parallel
+## 🧪 Benchmarking Tools
+
+| Tool        | Description                            |
+|-------------|----------------------------------------|
+| Java 17     | Core language for experimentation      |
+| JMH         | Benchmarking micro-framework for Java  |
+| Prometheus  | Metrics collection (planned)           |
+| Grafana     | Visualize performance metrics (planned)|
+
+## 📁 Structure
+
+This project is divided into multiple Maven modules, each representing a different scenario:
+
+- `loop-vs-streams`: Compare classic `for` loops, `Stream`, and `parallelStream`
 
 ##  loop-vs-streams-and-parallel
 
