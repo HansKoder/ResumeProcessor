@@ -1,4 +1,6 @@
-package org.hans.demo;
+package org.hans.demo.script;
+
+import org.hans.demo.util.ResumeUtil;
 
 import java.io.File;
 import java.util.Objects;

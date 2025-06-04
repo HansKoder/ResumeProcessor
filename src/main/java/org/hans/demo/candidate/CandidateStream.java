@@ -1,6 +1,8 @@
-package org.hans.demo;
+package org.hans.demo.candidate;
 
+import org.hans.demo.model.Candidate;
 import org.hans.demo.model.RoleProfile;
+import org.hans.demo.util.ResumeUtil;
 
 import java.io.File;
 import java.util.Collections;
@@ -12,8 +14,8 @@ public class CandidateStream {
     public List<Candidate> getCandidates (List<File> files) {
          return files.stream()
                 .map(file -> {
-                    String text = ResumeProcessor.extractText(file);
-                    Map<RoleProfile, Integer> scores = ResumeScorer.scoreResume(text);
+                    String text = ResumeUtil.extractText(file);
+                    Map<RoleProfile, Integer> scores = ResumeUtil.scoreResume(text);
                     return getBestMatch(file.getName(), scores);
                 }).toList();
 

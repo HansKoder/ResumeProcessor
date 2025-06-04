@@ -1,6 +1,11 @@
-package org.hans.demo;
+package org.hans.demo.benchmark;
 
 
+import org.hans.demo.candidate.CandidateLoop;
+import org.hans.demo.candidate.CandidateParallel;
+import org.hans.demo.candidate.CandidateStream;
+import org.hans.demo.util.ResumeUtil;
+import org.hans.demo.model.Candidate;
 import org.openjdk.jmh.annotations.*;
 
 import java.io.File;
