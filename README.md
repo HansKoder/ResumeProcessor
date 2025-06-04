@@ -25,7 +25,7 @@ This project is divided into multiple Maven modules, each representing a differe
 
 - `loop-vs-streams`: Compare classic `for` loops, `Stream`, and `parallelStream`
 
-##  loop-vs-streams-and-parallel
+## module loop-vs-streams
 
 ### Description
 This branch has as goal to compare among loop, streams and parallel, this is a small lab to understand better their behavior
@@ -33,25 +33,25 @@ This branch has as goal to compare among loop, streams and parallel, this is a s
 ### Steps
 
 ### 1) Clone resumes
-- Locate in the project's root
+- Locate in the project's root from module loop-vs-streams
+```cmd
+cd loop-vs-streams/
+```
 
 - mkdir cvs
-
 ```cmd
 mkdir cvs
 ```
 
 - Copy resume to test
-
 ```cmd
 cp -r cvs-original/* cvs/
 ```
 
 - execute PopulateCV only once using intellij
 
-
 ### 2) Benchmark
-- compile jar
+- clean and install
 ```mvn
 mvn clean install
 ```
@@ -59,12 +59,9 @@ mvn clean install
 - execute benchmark
 
 ```cmd
-java -jar target/ResumeProcessor-1.0-SNAPSHOT.jar
+java -jar target/loop-vs-streams-1.0-SNAPSHOT.jar 
 ```
 
 ### 3) For scripting (Optional)
-- Using intellij execute 
-```cmd
-Candidate/CandidateScript
-```
+- Run CandidateScript.java via IDE 
 
