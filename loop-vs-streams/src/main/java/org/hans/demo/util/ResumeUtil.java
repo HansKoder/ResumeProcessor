@@ -17,7 +17,7 @@ public class ResumeUtil {
     public static void cloneResumes(File originalResume, int copies) {
         String uuid = UUID.randomUUID().toString();
         for (int i = 0; i < copies; i++) {
-            File dest = new File("cvs/cv-" + i + "-" + uuid + ".pdf");
+            File dest = new File("loop-vs-streams/cvs/cv-" + i + "-" + uuid + ".pdf");
             try {
                 Files.copy(originalResume.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {

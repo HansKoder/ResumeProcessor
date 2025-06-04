@@ -8,7 +8,7 @@ import java.util.Objects;
 public class PopulateCV {
 
     public static void main(String[] args) {
-        File[] files = ResumeUtil.extractResumes("cvs-original/", ".pdf");
+        File[] files = ResumeUtil.extractResumes("loop-vs-streams/cvs-original/", ".pdf");
 
         if (Objects.isNull(files))
             throw new IllegalArgumentException("Must have cvs");
