@@ -1,4 +1,4 @@
-package org.hans.demo.model;
+package org.hans.demo.shared;
 
 import java.util.Set;
 

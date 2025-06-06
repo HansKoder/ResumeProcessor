@@ -1,6 +1,6 @@
 package org.hans.demo.candidate;
 
-import org.hans.demo.model.Candidate;
+import org.hans.demo.shared.Candidate;
 import org.hans.demo.util.ResumeUtil;
 
 import java.io.File;
@@ -10,27 +10,18 @@ import java.util.Objects;
 
 public class CandidateScript {
     public static void main(String[] args) {
-        File[] files = ResumeUtil.extractResumes("cvs/", ".pdf");
+        File[] files = ResumeUtil.extractResumes("loop-vs-streams/cvs/", ".pdf");
 
         if (Objects.isNull(files))
             throw new IllegalArgumentException("Must have cvs");
 
+        List<CandidateStrategy> impl = List.of(new CandidateLoop(), new CandidateStream(), new CandidateParallel());
 
-        long start = System.currentTimeMillis();
-        CandidateLoop loop = new CandidateLoop();
-        List<Candidate> candidatesLoop = loop.getCandidates(Arrays.asList(files));
-
-        System.out.println("Candidates Loop " + candidatesLoop.size() + ", time: " + (System.currentTimeMillis() - start));
-
-        start = System.currentTimeMillis();
-        CandidateStream stream = new CandidateStream();
-        List<Candidate> candidateStream = stream.getCandidates(Arrays.asList(files));
-        System.out.println("Candidates Stream " + candidateStream.size() + ", time: " + (System.currentTimeMillis() - start));
-
-        start = System.currentTimeMillis();
-        CandidateParallel parallel = new CandidateParallel();
-        List<Candidate> candidateParallel = parallel.getCandidates(Arrays.asList(files));
-        System.out.println("Candidates Parallel " + candidateParallel.size() + ", time: " + (System.currentTimeMillis() - start));
+        for (CandidateStrategy candidate : impl) {
+            long start = System.currentTimeMillis();
+            List<Candidate> response = candidate.getCandidates(Arrays.asList(files));
+            System.out.printf("Class %s, size of response %s, time elapsed %s \n", candidate.getClass().getName(), response.size(), (System.currentTimeMillis() - start));
+        }
     }
 
 }

@@ -1,21 +1,22 @@
 package org.hans.demo.candidate;
 
-import org.hans.demo.model.Candidate;
-import org.hans.demo.model.RoleProfile;
+import org.hans.demo.shared.Candidate;
+import org.hans.demo.shared.RoleProfile;
 import org.hans.demo.util.ResumeUtil;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-public class CandidateLoop {
+public class CandidateLoop implements CandidateStrategy {
 
     public List<Candidate> getCandidates (List<File> files) {
         List<Candidate> list = new ArrayList<>();
         for (File file: files) {
             String text = ResumeUtil.extractText(file);
-            Map<RoleProfile, Integer> scores = ResumeUtil.scoreResume(text);
+            Map<RoleProfile, Integer> scores = scoreResume(text);
             list.add(getBestMatch(file.getName(), scores));
         }
 
@@ -34,6 +35,21 @@ public class CandidateLoop {
         }
 
         return new Candidate(fileName, bestRole, bestScore);
+    }
+
+    private Map<RoleProfile, Integer> scoreResume(String resumeText) {
+        Map<RoleProfile, Integer> scores = new EnumMap<>(RoleProfile.class);
+
+        for (RoleProfile role : RoleProfile.values()) {
+            int score = 0;
+            for (String skill : role.getRequiredSkills()) {
+                if (resumeText.contains(skill)) {
+                    score++;
+                }
+            }
+            scores.put(role, score);
+        }
+        return scores;
     }
 
 }

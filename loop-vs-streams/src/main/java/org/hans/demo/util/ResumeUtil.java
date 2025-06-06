@@ -2,7 +2,7 @@ package org.hans.demo.util;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.hans.demo.model.RoleProfile;
+import org.hans.demo.shared.RoleProfile;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,19 +41,5 @@ public class ResumeUtil {
         }
     }
 
-    public static Map<RoleProfile, Integer> scoreResume(String resumeText) {
-        Map<RoleProfile, Integer> scores = new EnumMap<>(RoleProfile.class);
-
-        for (RoleProfile role : RoleProfile.values()) {
-            int score = 0;
-            for (String skill : role.getRequiredSkills()) {
-                if (resumeText.contains(skill)) {
-                    score++;
-                }
-            }
-            scores.put(role, score);
-        }
-        return scores;
-    }
 
 }
