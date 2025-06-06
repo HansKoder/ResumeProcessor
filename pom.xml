@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>loop-vs-streams</module>
-        <module>parallel-vs-completablefuture</module>
+        <module>sync-vs-completable-future</module>
     </modules>
 
     <properties>
